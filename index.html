@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+		<meta name="viewport" content="user-scalable=no, initial-scale=0.8, maximum-scale=0.8, minimum-scale=0.8, width=375, viewport-fit=cover" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/rating.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.fancybox.min.css" />
+        <title>Life Energy</title>
+		<script type="text/javascript" src="cordova.js"></script>
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+		<script type="text/javascript" src="js/jquery.mask.min.js"></script>
+		<script type="text/javascript" src="js/moment-with-locales.js"></script>
+		<script type="text/javascript" src="js/clndr.min.js"></script>
+		<script type="text/javascript" src="js/underscore.js"></script>
+		<script type="text/javascript" src="js/rating.min.js"></script>
+		<script type="text/javascript" src="js/jquery.fancybox.min.js"></script>
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAS43qBsKsxeRK93aMPtN4eQaaQk0Lg60g"></script>
+		<style>
+			.menu-lateral-item	{ text-align:left; color:#FFF; padding:20px 20px; border-top:1px solid #FFF; border-color:rgba(255,255,255,0.2); font-size:17px; text-transform:none; }
+			.menu-lateral-item i	{ display:block; float:left; width:40px; font-size:20px; }
+		</style>
+	</head>
+    <body>
+    <body>
+	    <div style="display:none;" id="menu_lateral">
+		    <div style="background:#01adb1; position:fixed; top:0px; left:0px; width:280px; height:100%; z-index:99999; overflow:scroll;">
+			    <div style="height:100px; background:url(img/logo_le.png) center center no-repeat; background-size:60px;"></div>
+				<div class="menu-lateral-item" id="menu-home"><i class="fal fa-home-lg"></i>Voltar para o Início</div>
+				<div class="menu-lateral-item" id="menu-faq"><i class="fal fa-table"></i>Dúvidas Frequentes</div>
+				<div class="menu-lateral-item" id="menu-dicas"><i class="fal fa-newspaper"></i>Dicas de Consumo</div>
+				<div class="menu-lateral-item" id="menu-termos"><i class="fal fa-birthday-cake"></i>Termos de Uso</div>
+				<div class="menu-lateral-item" id="menu-politica"><i class="fal fa-medal"></i>Política de Privacidade</div>
+				<div class="menu-lateral-item" id="menu-contato"><i class="fal fa-user-md"></i>Entre em Contato</div>
+		    </div>
+		    <div style="background-color:rgba(0,0,0,0.8); position:fixed; top:0px; right:0px; width:calc(100% - 280px); height:100%; z-index:99999;" id="fechar_menu"></div>
+	    </div>
+	    
+	    <div style='display:none;'><iframe width='320' height='30' id='iframe_foto' name='iframe_foto' src='' frameborder='0' allowfullscreen></iframe></div>
+		<div id="checarConexao" style="width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:99999; background-color:rgba(0,0,0,0.9); text-align:center; color:#FFF; display:none;"><br><br><br><br><img src="./img/warning.png" width="200"><br><br><br><br>SEM CONEXÃO NO MOMENTO!</div>
+		<div id="aguardePagamento" style="width:100%; height:100%; position:fixed; top:0px; left:0px; z-index:99999; background-color:rgba(0,0,0,0.9); text-align:center; color:#FFF; display:none;"><br><br><br><br><br><br><br><br>AGUARDE!</div>
+		<iframe id="iframe_forms" name="iframe_forms" width="0" height="0"></iframe>
+		
+			
+	    <div data-role="page"></div>
+			<script>
+				
+				var jaFicouOffline = 0;
+				
+				$('#menu-home').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("home.html", { transition: "none", changeHash: false }); });
+				$('#menu-faq').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("faq.html", { transition: "none", changeHash: false }); });
+				$('#menu-dicas').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("dicas.html", { transition: "none", changeHash: false }); });
+				$('#menu-termos').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("termos.html", { transition: "none", changeHash: false }); });
+				$('#menu-politica').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("politica.html", { transition: "none", changeHash: false }); });
+				$('#menu-contato').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("contato.html", { transition: "none", changeHash: false }); });;
+				
+				$('#fechar_menu').click(function(){ $('#menu_lateral').hide(); });
+				
+				document.addEventListener("deviceready", onDeviceReady, true);
+				document.addEventListener("online", onOnLine, true);
+				document.addEventListener("offline", onOffLine, true);
+				
+		        function onDeviceReady() {
+			        StatusBar.backgroundColorByName("black");
+			        StatusBar.overlaysWebView(false);
+			        StatusBar.show();
+		            setTimeout(carregar, 500);
+		        }
+		        
+		        function onOnLine(){
+		            $('#checarConexao').hide();
+		            if(jaFicouOffline==1){
+			            jaFicouOffline=0;
+				        $.mobile.changePage("./paginas/home.html", { transition: "none", changeHash: false });
+			        }
+		        }
+		        
+		        function onOffLine(){
+		            $('#checarConexao').show();
+		            jaFicouOffline = 1;
+		        }
+		        
+		        function carregar(){
+			        $.mobile.changePage("./paginas/home.html", { transition: "none", changeHash: false });
+				}
+				
+				alert = function (txt) {
+					navigator.notification.alert(txt,null,'AVISO','OK');
+				}
+				
+				confirm = function (txt) {
+					navigator.notification.confirm(txt,null,'AVISO','OK');
+				}
+				
+				document.addEventListener("backbutton", function(e){
+					$.mobile.changePage("home.html", { transition: "none", changeHash: false });
+				    e.preventDefault();
+				}, false);
+				
+			</script>
+    </body>
+</html>
