@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <widget xmlns = "http://www.w3.org/ns/widgets"
 	xmlns:gap = "http://phonegap.com/ns/1.0"
-	id        = "br.com.lifeenergy.app"
+	id        = "br.com.grupoleros.life"
 	versionCode="100" 
 	version   = "1.0.0">
 	<name>Life Energy</name>
@@ -9,7 +9,7 @@
 		Life Energy
 	</description>
 
-	<author href="http://equipejuliocoelho.com.br" email="contato@lifeenergy.com.br">
+	<author href="http://grupoleros.com.br" email="contato@grupoleros.com.br">
 		Life Energy
 	</author>
 	
