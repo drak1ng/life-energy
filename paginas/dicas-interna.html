@@ -34,20 +34,17 @@
     <body>
 	    
 	    <div data-role="page">
-
+		    
 		    <div class="topo">
 			    <div class="logotipo">
 				    <div class='btmenu-topo'><i class="fa fa-bars" aria-hidden="true"></i></div>
-				    <div class='perfil-topo'></div>
-				    <div style="margin:0px 80px; text-align:center; color:#FFF; font-family:'roboto';" id="mensagens-interna-titulo"><img src="../img/logo_jc.png" alt="Equipe Julio Coelho" width="100" id='mensagens-interna-titulo-imagem'></div>
 				</div>
 		    </div>
 
 			<div role="main" class="ui-content" style="text-align:center;">
-				<div class="conteudo" id="mensagens-interna-conteudo">
-					<div style="padding-top:120px; text-align:center; font-size:13px; color:#000;">
+				<div class="conteudo" id="dicas-interna-conteudo">
+					<div style="padding-top:120px; text-align:center; font-size:13px; color:#FFF;">
 						<img src="../img/ajax-loader.gif" /><br><br>
-						Aguarde carregando...
 					</div>
 				</div>
 			</div>
@@ -60,18 +57,9 @@
 				var foto_usuarios = window.localStorage.getItem('foto_usuarios');
 				var mensagem_id = window.localStorage.getItem('mensagem_id');
 				
-				if(foto_usuarios!=""){
-					$('.perfil-topo').css('background-image','url('+foto_usuarios+')');
-				}
+				$.get("http://grupoleros.com.br/aplicativo/app_api/dicas-interna.php", { id_usuarios:id_usuarios, mensagem_id:mensagem_id }, function(data){ $("#dicas-interna-conteudo").html(data); });
 				
-				window.localStorage.setItem('url_voltar','home.html');
-				
-				$.get("http://projetotemporario.com.br/app_api/mensagens-interna.php", { id_usuarios:id_usuarios, mensagem_id:mensagem_id }, function(data){ $("#mensagens-interna-conteudo").html(data); });
-				
-				$('.perfil-topo').click(function(){ $.mobile.changePage("preferencias.html", { transition: "fade", changeHash: false }); });
 				$('.btmenu-topo').click(function(){ $('#menu_lateral').show(); });
-				
-				$('#mensagens-interna-titulo-imagem').click(function(){ $.mobile.changePage("home.html", { transition: "fade", changeHash: false }); });
 				
 			</script>
 			
