@@ -56,6 +56,9 @@
 				<div class="menu-lateral-item" id="menu-dicas"><i class="far fa-asterisk"></i>Dicas de Consumo</div>
 				<div class="menu-lateral-item" id="menu-termos"><i class="fal fa-copy"></i>Termos de Uso</div>
 				<div class="menu-lateral-item" id="menu-politica"><i class="fal fa-copy"></i>Política de Privacidade</div>
+				<div class="menu-lateral-item" id="menu-painel"><i class="fal fa-clipboard"></i>Meu Painel</div>
+				<div class="menu-lateral-item" id="menu-cadastro"><i class="fal fa-user-cog"></i>Meu Cadastro</div>
+				<div class="menu-lateral-item" id="menu-sair"><i class="fal fa-sign-out-alt"></i>Sair</div>
 				<!--<div class="menu-lateral-item" id="menu-contato"><i class="fal fa-mail-bulk"></i>Entre em Contato</div>-->
 		    </div>
 		    <div style="background-color:rgba(0,0,0,0.8); position:fixed; top:0px; right:0px; width:calc(100% - 280px); height:100%; z-index:99999;" id="fechar_menu"></div>
@@ -77,7 +80,10 @@
 				$('#menu-dicas').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("dicas.html", { transition: "none", changeHash: false }); });
 				$('#menu-termos').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("termos.html", { transition: "none", changeHash: false }); });
 				$('#menu-politica').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("politica.html", { transition: "none", changeHash: false }); });
-				$('#menu-contato').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("contato.html", { transition: "none", changeHash: false }); });;
+				$('#menu-contato').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("contato.html", { transition: "none", changeHash: false }); });
+				$('#menu-painel').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("painel.html", { transition: "none", changeHash: false }); });
+				$('#menu-cadastro').click(function(){ $('#menu_lateral').hide(); $.mobile.changePage("cadstro.html", { transition: "none", changeHash: false }); });
+				$('#menu-sair').click(function(){ $('#menu_lateral').hide(); window.localStorage.setItem('login',''); window.localStorage.setItem('senha',''); $.mobile.changePage("home.html", { transition: "none", changeHash: false }); });
 				
 				$('#fechar_menu').click(function(){ $('#menu_lateral').hide(); });
 				
