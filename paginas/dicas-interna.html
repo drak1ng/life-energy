@@ -57,7 +57,7 @@
 				var foto_usuarios = window.localStorage.getItem('foto_usuarios');
 				var mensagem_id = window.localStorage.getItem('mensagem_id');
 				
-				$.get("http://grupoleros.com.br/aplicativo/app_api/dicas-interna.php", { id_usuarios:id_usuarios, mensagem_id:mensagem_id }, function(data){ $("#dicas-interna-conteudo").html(data); });
+				$.get("https://lifeenergy.app/app_api/dicas-interna.php", { id_usuarios:id_usuarios, mensagem_id:mensagem_id }, function(data){ $("#dicas-interna-conteudo").html(data); });
 				
 				$('.btmenu-topo').click(function(){ $('#menu_lateral').show(); });
 				
