@@ -56,7 +56,7 @@
 				var registrationId = window.localStorage.getItem('registrationId');
 				var foto_usuarios = window.localStorage.getItem('foto_usuarios');
 				
-				$.get("https://lifeenergy.app/app_api/dicas.php", { id_usuarios:id_usuarios }, function(data){ $("#dicas-conteudo").html(data); });
+				$.get("http://lifeenergy.app/app_api/dicas.php", { id_usuarios:id_usuarios }, function(data){ $("#dicas-conteudo").html(data); });
 				
 				$('.btmenu-topo').click(function(){ $('#menu_lateral').show(); });
 				

@@ -59,7 +59,7 @@
 				var login = window.localStorage.getItem('login');
 				var senha = window.localStorage.getItem('senha');
 				
-				$.get("https://lifeenergy.app/app_api/cadastro.php", { login:login, senha:senha }, function(data){ $("#cadastro-conteudo").html(data); });
+				$.get("http://lifeenergy.app/app_api/cadastro.php", { login:login, senha:senha }, function(data){ $("#cadastro-conteudo").html(data); });
 				
 				$('.btmenu-topo').click(function(){ $('#menu_lateral').show(); });
 								
